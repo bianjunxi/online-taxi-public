@@ -1,6 +1,8 @@
 package com.mi.passenger.service.impl;
 
+import ch.qos.logback.core.subst.Token;
 import com.mi.common.dto.NumberCodeResponse;
+import com.mi.common.dto.TokenResponse;
 import com.mi.common.request.ResponseResult;
 import com.mi.passenger.remote.ServiceVerificationCodeClient;
 import com.mi.passenger.service.VerificationCodeService;
@@ -51,5 +53,32 @@ public class VerificationCodeServiceImpl implements VerificationCodeService {
 
 
         return ResponseResult.success("");
+    }
+
+    /**
+     * 校验验证码
+     *
+     * @param passengerPhone   手机号
+     * @param verificationCode 验证码
+     * @return
+     */
+    @Override
+    public ResponseResult checkCode(String passengerPhone, String verificationCode) {
+        // 根据手机号,从redis中获取验证码
+        System.out.println("根据手机号,从redis中获取验证码");
+
+        // 校验验证码
+        System.out.println("校验验证码");
+
+        // 判断原来是否有用户,并进行对应的处理
+        System.out.println("判断原来是否有用户,并进行对应的处理");
+
+        // 颁发令牌
+        System.out.println("颁发令牌");
+
+        TokenResponse tokenResponse = new TokenResponse();
+        tokenResponse.setToken("token value");
+
+        return ResponseResult.success(tokenResponse);
     }
 }

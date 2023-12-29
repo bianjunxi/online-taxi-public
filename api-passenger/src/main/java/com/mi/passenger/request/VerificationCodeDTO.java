@@ -1,5 +1,7 @@
 package com.mi.passenger.request;
 
+import lombok.Data;
+
 /**
  * ClassName: VerificationCodeDTO
  * Description:
@@ -7,15 +9,10 @@ package com.mi.passenger.request;
  * @author Jay
  * @version v1.0
  */
+@Data
 public class VerificationCodeDTO {
 
     private String passengerPhone;
+    private String verificationCode;
 
-    public String getPassengerPhone() {
-        return passengerPhone;
-    }
-
-    public void setPassengerPhone(String passengerPhone) {
-        this.passengerPhone = passengerPhone;
-    }
 }

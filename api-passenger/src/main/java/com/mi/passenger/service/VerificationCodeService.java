@@ -18,4 +18,12 @@ public interface VerificationCodeService {
      */
     ResponseResult generatorCode(String passengerPhone);
 
+    /**
+     * 校验验证码
+     * @param passengerPhone 手机号
+     * @param verificationCode 验证码
+     * @return
+     */
+    ResponseResult checkCode(String passengerPhone,String verificationCode);
+
 }
