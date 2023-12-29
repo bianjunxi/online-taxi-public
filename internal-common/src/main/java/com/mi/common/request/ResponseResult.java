@@ -29,6 +29,10 @@ public class ResponseResult<T> {
         return new ResponseResult().setCode(CommonStatusEnum.SUCCESS.getCode()).setMessage(CommonStatusEnum.SUCCESS.getMessage()).setData(data);
     }
 
+    public static <T> ResponseResult success(){
+        return new ResponseResult().setCode(CommonStatusEnum.SUCCESS.getCode()).setMessage(CommonStatusEnum.SUCCESS.getMessage());
+    }
+
     /**
      * 失败：自定义失败 错误码和提示信息
      * @param code

@@ -1,5 +1,7 @@
 package com.mi.passenger.service;
 
+import com.mi.common.request.ResponseResult;
+
 /**
  * ClassName: VerificationCodeService
  * Description:
@@ -14,6 +16,6 @@ public interface VerificationCodeService {
      * @param passengerPhone 手机号
      * @return json
      */
-    String generatorCode(String passengerPhone);
+    ResponseResult generatorCode(String passengerPhone);
 
 }
