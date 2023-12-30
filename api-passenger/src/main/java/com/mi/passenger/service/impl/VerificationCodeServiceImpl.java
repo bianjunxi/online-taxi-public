@@ -4,6 +4,8 @@ import com.mi.common.constant.CommonStatusEnum;
 import com.mi.common.dto.NumberCodeResponse;
 import com.mi.common.dto.TokenResponse;
 import com.mi.common.dto.ResponseResult;
+import com.mi.common.request.VerificationCodeDTO;
+import com.mi.passenger.remote.ServicePassengerUserClient;
 import com.mi.passenger.remote.ServiceVerificationCodeClient;
 import com.mi.passenger.service.VerificationCodeService;
 import org.apache.commons.lang.StringUtils;
@@ -66,6 +68,9 @@ public class VerificationCodeServiceImpl implements VerificationCodeService {
         return VERIFICATION_CODE_PREFIX + passengerPhone;
     }
 
+    @Autowired
+    private ServicePassengerUserClient servicePassengerUserClient;
+
     /**
      * 校验验证码
      *
@@ -90,7 +95,9 @@ public class VerificationCodeServiceImpl implements VerificationCodeService {
         }
 
         // 判断原来是否有用户,并进行对应的处理
-        System.out.println("判断原来是否有用户,并进行对应的处理");
+        VerificationCodeDTO verificationCodeDTO = new VerificationCodeDTO();
+        verificationCodeDTO.setPassengerPhone(passengerPhone);
+        servicePassengerUserClient.loginOrRegister(verificationCodeDTO);
 
         // 颁发令牌
         System.out.println("颁发令牌");
