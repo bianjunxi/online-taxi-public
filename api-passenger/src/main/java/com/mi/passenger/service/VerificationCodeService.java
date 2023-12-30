@@ -1,6 +1,6 @@
 package com.mi.passenger.service;
 
-import com.mi.common.request.ResponseResult;
+import com.mi.common.dto.ResponseResult;
 
 /**
  * ClassName: VerificationCodeService

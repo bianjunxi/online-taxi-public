@@ -1,4 +1,4 @@
-package com.mi.common.request;
+package com.mi.common.dto;
 
 import com.mi.common.constant.CommonStatusEnum;
 import lombok.Data;

@@ -1,4 +1,4 @@
-package com.mi.passenger.request;
+package com.mi.common.request;
 
 import lombok.Data;
 

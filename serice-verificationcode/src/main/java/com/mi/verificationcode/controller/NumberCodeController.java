@@ -1,8 +1,7 @@
 package com.mi.verificationcode.controller;
 
 import com.mi.common.dto.NumberCodeResponse;
-import com.mi.common.request.ResponseResult;
-import net.sf.json.JSONObject;
+import com.mi.common.dto.ResponseResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;

@@ -1,13 +1,11 @@
 package com.mi.passenger.service.impl;
 
-import ch.qos.logback.core.subst.Token;
 import com.mi.common.constant.CommonStatusEnum;
 import com.mi.common.dto.NumberCodeResponse;
 import com.mi.common.dto.TokenResponse;
-import com.mi.common.request.ResponseResult;
+import com.mi.common.dto.ResponseResult;
 import com.mi.passenger.remote.ServiceVerificationCodeClient;
 import com.mi.passenger.service.VerificationCodeService;
-import net.sf.json.JSONObject;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
