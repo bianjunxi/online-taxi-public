@@ -41,6 +41,7 @@ public class UserServiceImpl implements UserService {
         //判断用户信息是否存在
         if (passengerUser == null) {
             //如果不存在,插入用户信息
+            passengerUser = new PassengerUser();
             passengerUser.setPassengerName("用户" + passengerPhone);
             passengerUser.setPassengerPhone(passengerPhone);
             passengerUser.setPassengerGender((byte) 1);
