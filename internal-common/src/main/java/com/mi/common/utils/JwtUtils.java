@@ -1,4 +1,4 @@
-package com.mi.passenger.utils;
+package com.mi.common.utils;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTCreator;
@@ -45,7 +45,7 @@ public class JwtUtils {
         });
 
         //整合过期时间
-        builder.withExpiresAt(date);
+        //builder.withExpiresAt(date);
 
         //生成token
         return builder.sign(Algorithm.HMAC256(SECRET));
@@ -54,8 +54,8 @@ public class JwtUtils {
     //解析token
     public static TokenResult parseToken(String token) {
         DecodedJWT verify = JWT.require(Algorithm.HMAC256(SECRET)).build().verify(token);
-        String phone = verify.getClaim(JWT_KEY_PHONE).toString();
-        String identity = verify.getClaim(JWT_KEY_IDENTITY).toString();
+        String phone = verify.getClaim(JWT_KEY_PHONE).asString();
+        String identity = verify.getClaim(JWT_KEY_IDENTITY).asString();
 
         TokenResult tokenResult = new TokenResult();
         tokenResult.setPhone(phone);
