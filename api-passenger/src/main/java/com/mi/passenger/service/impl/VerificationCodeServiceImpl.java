@@ -1,6 +1,8 @@
 package com.mi.passenger.service.impl;
 
+import com.auth0.jwt.JWT;
 import com.mi.common.constant.CommonStatusEnum;
+import com.mi.common.constant.IdentityConstant;
 import com.mi.common.dto.NumberCodeResponse;
 import com.mi.common.dto.TokenResponse;
 import com.mi.common.dto.ResponseResult;
@@ -8,6 +10,7 @@ import com.mi.common.request.VerificationCodeDTO;
 import com.mi.passenger.remote.ServicePassengerUserClient;
 import com.mi.passenger.remote.ServiceVerificationCodeClient;
 import com.mi.passenger.service.VerificationCodeService;
+import com.mi.passenger.utils.JwtUtils;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
@@ -100,10 +103,10 @@ public class VerificationCodeServiceImpl implements VerificationCodeService {
         servicePassengerUserClient.loginOrRegister(verificationCodeDTO);
 
         // 颁发令牌
-        System.out.println("颁发令牌");
+        String token = JwtUtils.generateToken(passengerPhone, IdentityConstant.PASSENGER_IDENTITY);
 
         TokenResponse tokenResponse = new TokenResponse();
-        tokenResponse.setToken("token value");
+        tokenResponse.setToken(token);
 
         return ResponseResult.success(tokenResponse);
     }
