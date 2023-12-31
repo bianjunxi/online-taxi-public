@@ -3,6 +3,8 @@ package com.mi.passenger.utils;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTCreator;
 import com.auth0.jwt.algorithms.Algorithm;
+import com.auth0.jwt.interfaces.Claim;
+import com.auth0.jwt.interfaces.DecodedJWT;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -20,9 +22,13 @@ public class JwtUtils {
 
     //盐
     private static final String SECRET = "wojiaobjx";
+    private static final String JWT_KEY = "passengerPhone";
 
     //生成token
-    public static String generateToken(Map<String,String> map) {
+    public static String generateToken(String passengerPhone) {
+        Map<String,String> map = new HashMap<>();
+        map.put(JWT_KEY,passengerPhone);
+
         //token过期时间
         Calendar calendar = Calendar.getInstance();
         calendar.add(Calendar.DATE,1);
@@ -38,18 +44,24 @@ public class JwtUtils {
         builder.withExpiresAt(date);
 
         //生成token
-        String sign = builder.sign(Algorithm.HMAC256(SECRET));
-
-        return sign;
+        return builder.sign(Algorithm.HMAC256(SECRET));
     }
 
     //解析token
+    public static String parseToken(String token) {
+        DecodedJWT verify = JWT.require(Algorithm.HMAC256(SECRET)).build().verify(token);
+        Claim claim = verify.getClaim(JWT_KEY);
+        return claim.toString();
+    }
 
     public static void main(String[] args) {
-        Map<String,String> map = new HashMap<>();
-        map.put("name","x");
-        map.put("age","18");
-        System.out.println(generateToken(map));
+//        Map<String,String> map = new HashMap<>();
+//        map.put("name","x");
+//        map.put("age","18");
+        String token = generateToken("13910733521");
+        System.out.println("生成的token:"+ token);
+        System.out.println("解析的token:"+ parseToken(token));
+
     }
 
 }
