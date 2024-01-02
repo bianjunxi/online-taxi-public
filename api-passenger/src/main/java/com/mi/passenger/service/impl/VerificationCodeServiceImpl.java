@@ -2,6 +2,7 @@ package com.mi.passenger.service.impl;
 
 import com.mi.common.constant.CommonStatusEnum;
 import com.mi.common.constant.IdentityConstant;
+import com.mi.common.constant.TokenConstants;
 import com.mi.common.dto.NumberCodeResponse;
 import com.mi.common.dto.TokenResponse;
 import com.mi.common.dto.ResponseResult;
@@ -89,13 +90,18 @@ public class VerificationCodeServiceImpl implements VerificationCodeService {
         servicePassengerUserClient.loginOrRegister(verificationCodeDTO);
 
         // 颁发令牌
-        String token = JwtUtils.generateToken(passengerPhone, IdentityConstant.PASSENGER_IDENTITY);
+        String accessToken = JwtUtils.generateToken(passengerPhone, IdentityConstant.PASSENGER_IDENTITY, TokenConstants.ACCESS_TOKEN_TYPE);
+        String refreshToken = JwtUtils.generateToken(passengerPhone, IdentityConstant.PASSENGER_IDENTITY,TokenConstants.REFRESH_TOKEN_TYPE);
+
         // 将token存储到redis
-        String tokenKey = RedisPrefixUtils.generatorToken(passengerPhone, IdentityConstant.PASSENGER_IDENTITY);
-        redisTemplate.opsForValue().set(tokenKey,token,30, TimeUnit.DAYS);
+        String accessTokenKey = RedisPrefixUtils.generatorToken(passengerPhone, IdentityConstant.PASSENGER_IDENTITY,TokenConstants.ACCESS_TOKEN_TYPE);
+        redisTemplate.opsForValue().set(accessTokenKey,accessToken,30, TimeUnit.DAYS);
+        String refreshTokenKey = RedisPrefixUtils.generatorToken(passengerPhone, IdentityConstant.PASSENGER_IDENTITY,TokenConstants.REFRESH_TOKEN_TYPE);
+        redisTemplate.opsForValue().set(refreshTokenKey,refreshToken,31, TimeUnit.DAYS);
 
         TokenResponse tokenResponse = new TokenResponse();
-        tokenResponse.setToken(token);
+        tokenResponse.setAccessToken(accessToken);
+        tokenResponse.setRefreshToken(refreshToken);
 
         return ResponseResult.success(tokenResponse);
     }
