@@ -94,9 +94,9 @@ public class VerificationCodeServiceImpl implements VerificationCodeService {
         String refreshToken = JwtUtils.generateToken(passengerPhone, IdentityConstant.PASSENGER_IDENTITY,TokenConstants.REFRESH_TOKEN_TYPE);
 
         // 将token存储到redis
-        String accessTokenKey = RedisPrefixUtils.generatorToken(passengerPhone, IdentityConstant.PASSENGER_IDENTITY,TokenConstants.ACCESS_TOKEN_TYPE);
+        String accessTokenKey = RedisPrefixUtils.generatorTokenKey(passengerPhone, IdentityConstant.PASSENGER_IDENTITY,TokenConstants.ACCESS_TOKEN_TYPE);
         redisTemplate.opsForValue().set(accessTokenKey,accessToken,30, TimeUnit.DAYS);
-        String refreshTokenKey = RedisPrefixUtils.generatorToken(passengerPhone, IdentityConstant.PASSENGER_IDENTITY,TokenConstants.REFRESH_TOKEN_TYPE);
+        String refreshTokenKey = RedisPrefixUtils.generatorTokenKey(passengerPhone, IdentityConstant.PASSENGER_IDENTITY,TokenConstants.REFRESH_TOKEN_TYPE);
         redisTemplate.opsForValue().set(refreshTokenKey,refreshToken,31, TimeUnit.DAYS);
 
         TokenResponse tokenResponse = new TokenResponse();
