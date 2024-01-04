@@ -3,16 +3,12 @@ package com.mi.user.service.impl;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.mi.common.dto.ResponseResult;
 import com.mi.user.mapper.PassengerUserMapper;
-import com.mi.user.pojo.PassengerUser;
+import com.mi.common.dto.PassengerUser;
 import com.mi.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
 
 /**
  * ClassName: UserServiceImpl

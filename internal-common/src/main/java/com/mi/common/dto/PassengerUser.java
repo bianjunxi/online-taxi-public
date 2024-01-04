@@ -1,4 +1,4 @@
-package com.mi.user.pojo;
+package com.mi.common.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -29,5 +29,7 @@ public class PassengerUser {
     private LocalDateTime gmtCreate;
 
     private LocalDateTime gmtModified;
+
+    private String profilePhoto;
 
 }
