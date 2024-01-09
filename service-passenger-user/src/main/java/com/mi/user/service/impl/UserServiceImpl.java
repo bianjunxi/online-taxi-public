@@ -1,6 +1,7 @@
 package com.mi.user.service.impl;
 
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import com.mi.common.constant.CommonStatusEnum;
 import com.mi.common.dto.ResponseResult;
 import com.mi.user.mapper.PassengerUserMapper;
 import com.mi.common.dto.PassengerUser;
@@ -48,5 +49,22 @@ public class UserServiceImpl implements UserService {
         }
 
         return ResponseResult.success();
+    }
+
+    /**
+     * 根据手机号查询用户信息
+     *
+     * @param passengerPhone
+     * @return
+     */
+    @Override
+    public ResponseResult getUser(String passengerPhone) {
+        //根据手机号查询用户信息
+        PassengerUser passengerUser = passengerUserMapper.selectOne(Wrappers.<PassengerUser>lambdaQuery().eq(PassengerUser::getPassengerPhone, passengerPhone));
+        //判断用户信息是否存在
+        if (passengerUser == null) {
+            return ResponseResult.fail(CommonStatusEnum.USER_NOT_EXISTS.getCode(),CommonStatusEnum.USER_NOT_EXISTS.getMessage());
+        }
+        return ResponseResult.success(passengerUser);
     }
 }

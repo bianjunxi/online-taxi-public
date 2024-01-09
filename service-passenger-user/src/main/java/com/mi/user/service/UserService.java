@@ -19,4 +19,11 @@ public interface UserService {
      */
     ResponseResult loginOrRegister(String passengerPhone);
 
+    /**
+     * 根据手机号查询用户信息
+     * @param passengerPhone
+     * @return
+     */
+    ResponseResult getUser(String passengerPhone);
+
 }
