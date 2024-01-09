@@ -4,10 +4,7 @@ import com.mi.common.dto.ResponseResult;
 import com.mi.common.request.VerificationCodeDTO;
 import com.mi.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * ClassName: UserController
@@ -29,9 +26,8 @@ public class UserController {
         return userService.loginOrRegister(passengerPhone);
     }
 
-    @GetMapping("/user")
-    public ResponseResult getUser(@RequestBody VerificationCodeDTO dto){
-        String passengerPhone = dto.getPassengerPhone();
+    @GetMapping("/user/{phone}")
+    public ResponseResult getUser(@PathVariable("phone") String passengerPhone){
         return userService.getUser(passengerPhone);
     }
 

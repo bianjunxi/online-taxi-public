@@ -4,8 +4,10 @@ import com.mi.common.dto.PassengerUser;
 import com.mi.common.dto.ResponseResult;
 import com.mi.common.dto.TokenResult;
 import com.mi.common.utils.JwtUtils;
+import com.mi.passenger.remote.ServicePassengerUserClient;
 import com.mi.passenger.service.UserService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -18,6 +20,10 @@ import org.springframework.stereotype.Service;
 @Service
 @Slf4j
 public class UserServiceImpl implements UserService {
+
+    @Autowired
+    private ServicePassengerUserClient passengerUserClient;
+
     /**
      * 获取登录乘客用户信息
      *
@@ -34,10 +40,6 @@ public class UserServiceImpl implements UserService {
         log.info("手机号:" + phone);
 
         //根据手机号查询用户信息
-        PassengerUser passengerUser = new PassengerUser();
-        passengerUser.setPassengerName("张三");
-        passengerUser.setProfilePhoto("头像");
-
-        return ResponseResult.success(passengerUser);
+        return ResponseResult.success(passengerUserClient.getUser(phone).getData());
     }
 }
