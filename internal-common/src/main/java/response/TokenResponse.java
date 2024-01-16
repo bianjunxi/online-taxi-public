@@ -1,4 +1,4 @@
-package com.mi.common.dto;
+package response;
 
 import lombok.Data;
 

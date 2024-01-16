@@ -1,6 +1,6 @@
 package com.mi.passenger.remote;
 
-import com.mi.common.dto.NumberCodeResponse;
+import response.NumberCodeResponse;
 import com.mi.common.dto.ResponseResult;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PathVariable;

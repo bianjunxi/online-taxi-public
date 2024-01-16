@@ -1,6 +1,6 @@
 package com.mi.verificationcode.controller;
 
-import com.mi.common.dto.NumberCodeResponse;
+import response.NumberCodeResponse;
 import com.mi.common.dto.ResponseResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
