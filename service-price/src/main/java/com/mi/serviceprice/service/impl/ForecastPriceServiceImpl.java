@@ -5,7 +5,7 @@ import com.mi.common.request.ForecastPriceDto;
 import com.mi.serviceprice.service.ForecastPriceService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-import response.ForecastPriceResponse;
+import com.mi.common.response.ForecastPriceResponse;
 
 /**
  * ClassName:  ForecastPriceServiceImpl
@@ -36,7 +36,9 @@ public class ForecastPriceServiceImpl implements ForecastPriceService {
         log.info(destLongitude);
         log.info(destLatitude);
 
-        log.info("调用计价服务,计算价格");
+        log.info("调用地图服务,查询距离和时长");
+        log.info("读取计价规则");
+        log.info("根据距离、时长和计价规则预估价格");
 
         ForecastPriceResponse response = new ForecastPriceResponse();
         response.setPrice(100);

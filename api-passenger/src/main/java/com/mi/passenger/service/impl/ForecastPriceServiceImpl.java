@@ -5,7 +5,7 @@ import com.mi.common.request.ForecastPriceDto;
 import com.mi.passenger.service.ForecastPriceService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-import response.ForecastPriceResponse;
+import com.mi.common.response.ForecastPriceResponse;
 
 /**
  * ClassName:  ForecastPriceServiceImpl

@@ -1,4 +1,4 @@
-package response;
+package com.mi.common.response;
 
 import lombok.Data;
 

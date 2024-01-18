@@ -3,7 +3,7 @@ package com.mi.passenger.service.impl;
 import com.mi.common.constant.CommonStatusEnum;
 import com.mi.common.constant.TokenConstants;
 import com.mi.common.dto.ResponseResult;
-import response.TokenResponse;
+import com.mi.common.response.TokenResponse;
 import com.mi.common.dto.TokenResult;
 import com.mi.common.utils.JwtUtils;
 import com.mi.common.utils.RedisPrefixUtils;

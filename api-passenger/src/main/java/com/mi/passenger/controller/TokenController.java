@@ -1,7 +1,7 @@
 package com.mi.passenger.controller;
 
 import com.mi.common.dto.ResponseResult;
-import response.TokenResponse;
+import com.mi.common.response.TokenResponse;
 import com.mi.passenger.service.TokenService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
