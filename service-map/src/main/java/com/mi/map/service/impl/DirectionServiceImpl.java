@@ -3,9 +3,11 @@ package com.mi.map.service.impl;
 import com.mi.common.dto.ResponseResult;
 import com.mi.common.request.ForecastPriceDto;
 import com.mi.common.response.DirectionResponse;
+import com.mi.map.remote.DirectionClient;
 import com.mi.map.service.DirectionService;
 import lombok.extern.log4j.Log4j;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -19,6 +21,9 @@ import org.springframework.stereotype.Service;
 @Slf4j
 public class DirectionServiceImpl implements DirectionService {
 
+    @Autowired
+    private DirectionClient directionClient;
+
     /**
      * 根据起点经纬度和终点经纬度获取距离和时长
      *
@@ -27,11 +32,8 @@ public class DirectionServiceImpl implements DirectionService {
      */
     @Override
     public ResponseResult driving(ForecastPriceDto dto) {
-
-        DirectionResponse response = new DirectionResponse();
-        response.setDistance(100);
-        response.setDuration(200);
-
-        return ResponseResult.success(response);
+        // 调用第三方接口
+        DirectionResponse direction = directionClient.direction(dto);
+        return ResponseResult.success(direction);
     }
 }
