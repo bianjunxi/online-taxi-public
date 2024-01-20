@@ -2,6 +2,7 @@ package com.mi.map.service;
 
 import com.mi.common.dto.ResponseResult;
 import com.mi.common.request.ForecastPriceDto;
+import com.mi.common.response.DirectionResponse;
 
 /**
  * ClassName:  DirectionService

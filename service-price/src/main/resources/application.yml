@@ -1,2 +1,11 @@
 server:
   port: 8084
+
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.200.130:8848
+  application:
+    name: service-price
+
