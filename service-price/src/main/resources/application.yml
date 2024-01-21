@@ -2,10 +2,21 @@ server:
   port: 8084
 
 spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://192.168.200.130:3306/service_price?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8
+    username: root
+    password: root
   cloud:
     nacos:
       discovery:
         server-addr: 192.168.200.130:8848
   application:
     name: service-price
+
+mybatis-plus:
+  global-config:
+    db-config:
+      #  设置mybatis-Plus的 db表名的 全局配置
+      table-prefix: tbl_
 

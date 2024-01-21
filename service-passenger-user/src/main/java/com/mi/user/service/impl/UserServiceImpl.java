@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.mi.common.constant.CommonStatusEnum;
 import com.mi.common.dto.ResponseResult;
 import com.mi.user.mapper.PassengerUserMapper;
-import com.mi.common.dto.PassengerUser;
+import com.mi.common.vo.PassengerUser;
 import com.mi.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

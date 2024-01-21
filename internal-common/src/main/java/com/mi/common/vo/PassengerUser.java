@@ -1,4 +1,4 @@
-package com.mi.common.dto;
+package com.mi.common.vo;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

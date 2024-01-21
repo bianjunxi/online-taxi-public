@@ -1,6 +1,5 @@
 package com.mi.passenger.service.impl;
 
-import com.mi.common.dto.PassengerUser;
 import com.mi.common.dto.ResponseResult;
 import com.mi.common.dto.TokenResult;
 import com.mi.common.utils.JwtUtils;

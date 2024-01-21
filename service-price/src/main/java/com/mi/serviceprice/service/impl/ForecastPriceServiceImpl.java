@@ -1,8 +1,12 @@
 package com.mi.serviceprice.service.impl;
 
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import com.mi.common.constant.CommonStatusEnum;
 import com.mi.common.dto.ResponseResult;
 import com.mi.common.request.ForecastPriceDto;
 import com.mi.common.response.DirectionResponse;
+import com.mi.common.vo.PriceRule;
+import com.mi.serviceprice.mapper.PriceRuleMapper;
 import com.mi.serviceprice.remote.ServiceMapClient;
 import com.mi.serviceprice.service.ForecastPriceService;
 import lombok.extern.slf4j.Slf4j;
@@ -20,6 +24,9 @@ import com.mi.common.response.ForecastPriceResponse;
 @Service
 @Slf4j
 public class ForecastPriceServiceImpl implements ForecastPriceService {
+
+    @Autowired
+    private PriceRuleMapper priceRuleMapper;
 
     @Autowired
     private ServiceMapClient serviceMapClient;
@@ -50,6 +57,16 @@ public class ForecastPriceServiceImpl implements ForecastPriceService {
         log.info("距离：" + distance + ",时长：" + duration);
 
         log.info("读取计价规则");
+        PriceRule priceRule = priceRuleMapper.selectOne(Wrappers.<PriceRule>lambdaQuery().
+                eq(PriceRule::getCityCode, "1001").eq(PriceRule::getVehicleCode, "1"));
+
+        if (priceRule == null){
+            ResponseResult.fail(CommonStatusEnum.PRICE_RULE_EMPTY.getCode(),CommonStatusEnum.PRICE_RULE_EMPTY.getMessage());
+        }
+
+        System.out.println(priceRule);
+
+
         log.info("根据距离、时长和计价规则预估价格");
 
         ForecastPriceResponse response = new ForecastPriceResponse();
