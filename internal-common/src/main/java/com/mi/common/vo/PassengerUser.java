@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 
 /**
  * ClassName: PassengerUser
- * Description:
+ * Description: 用户信息实体类
  *
  * @author Jay
  * @version v1.0
