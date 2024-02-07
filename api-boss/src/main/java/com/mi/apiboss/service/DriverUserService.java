@@ -1,11 +1,11 @@
-package com.mi.driveruser.service;
+package com.mi.apiboss.service;
 
 import com.mi.common.dto.ResponseResult;
 import com.mi.common.vo.DriverUser;
 
 /**
  * ClassName:  DriverUserService
- * Description: 司机信息管理service
+ * Description: 司机信息
  *
  * @author Jay
  * @version v1.0
@@ -13,14 +13,14 @@ import com.mi.common.vo.DriverUser;
 public interface DriverUserService {
     /**
      * 插入司机信息
-     * @param driverUser 司机实体类
+     * @param driverUser 司机信息
      * @return
      */
     ResponseResult addDriverUser(DriverUser driverUser);
 
     /**
      * 修改司机信息
-     * @param driverUser 司机实体类
+     * @param driverUser 司机信息
      * @return
      */
     ResponseResult updateDriverUser(DriverUser driverUser);

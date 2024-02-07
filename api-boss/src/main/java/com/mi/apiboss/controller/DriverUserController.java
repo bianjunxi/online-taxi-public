@@ -1,8 +1,8 @@
-package com.mi.driveruser.controller;
+package com.mi.apiboss.controller;
 
+import com.mi.apiboss.service.DriverUserService;
 import com.mi.common.dto.ResponseResult;
 import com.mi.common.vo.DriverUser;
-import com.mi.driveruser.service.DriverUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * ClassName:  DriverUserController
- * Description: 司机信息controller
+ * Description: 司机信息
  *
  * @author Jay
  * @version v1.0
@@ -22,13 +22,13 @@ public class DriverUserController {
     @Autowired
     private DriverUserService driverUserService;
 
-    @PostMapping("/user")
-    public ResponseResult addUser(@RequestBody DriverUser driverUser){
+    @PostMapping("/driver-user")
+    public ResponseResult addDriverUser(@RequestBody DriverUser driverUser){
         return driverUserService.addDriverUser(driverUser);
     }
 
-    @PutMapping("/user")
-    public ResponseResult updateUser(@RequestBody DriverUser driverUser){
+    @PutMapping("/driver-user")
+    public ResponseResult updateDriverUser(@RequestBody DriverUser driverUser){
         return driverUserService.updateDriverUser(driverUser);
     }
 

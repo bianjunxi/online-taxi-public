@@ -37,4 +37,17 @@ public class DriverUserServiceImpl implements DriverUserService {
         driverUserMapper.insert(driverUser);
         return ResponseResult.success("");
     }
+
+    /**
+     * 修改司机信息
+     *
+     * @param driverUser 司机实体类
+     * @return
+     */
+    @Override
+    public ResponseResult updateDriverUser(DriverUser driverUser) {
+        driverUser.setGmtModified(LocalDateTime.now());
+        driverUserMapper.updateById(driverUser);
+        return ResponseResult.success("");
+    }
 }
