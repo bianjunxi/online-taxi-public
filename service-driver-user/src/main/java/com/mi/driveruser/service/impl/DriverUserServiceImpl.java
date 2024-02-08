@@ -1,5 +1,7 @@
 package com.mi.driveruser.service.impl;
 
+import com.mi.common.constant.CommonStatusEnum;
+import com.mi.common.constant.DriverCarConstants;
 import com.mi.common.dto.ResponseResult;
 import com.mi.common.vo.DriverUser;
 import com.mi.driveruser.mapper.DriverUserMapper;
@@ -9,6 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * ClassName:  DriverUserServiceImpl
@@ -49,5 +54,24 @@ public class DriverUserServiceImpl implements DriverUserService {
         driverUser.setGmtModified(LocalDateTime.now());
         driverUserMapper.updateById(driverUser);
         return ResponseResult.success("");
+    }
+
+    /**
+     * 根据手机号查询司机
+     *
+     * @param driverPhone
+     * @return
+     */
+    @Override
+    public String getDriverUserByPhone(String driverPhone) {
+        Map<String,Object> map = new HashMap<>();
+        map.put("driver_phone", driverPhone);
+        map.put("state", DriverCarConstants.DRIVER_STATE_VALID);
+        List<DriverUser> driverUsers = driverUserMapper.selectByMap(map);
+        if (driverUsers.isEmpty()){
+            throw new RuntimeException(CommonStatusEnum.DRIVER_NOT_EXITST.getMessage());
+        }
+        DriverUser driverUser = driverUsers.get(0);
+        return driverUser.getDriverPhone();
     }
 }

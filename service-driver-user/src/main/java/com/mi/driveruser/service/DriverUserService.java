@@ -24,4 +24,12 @@ public interface DriverUserService {
      * @return
      */
     ResponseResult updateDriverUser(DriverUser driverUser);
+
+    /**
+     * 根据手机号查询司机
+     * @param driverPhone
+     * @return
+     */
+    String getDriverUserByPhone(String driverPhone);
+
 }

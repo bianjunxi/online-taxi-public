@@ -12,7 +12,7 @@ public class RedisPrefixUtils {
     /**
      * 乘客验证码前缀
      */
-    public static final String VERIFICATION_CODE_PREFIX = "passenger_verification_code_";
+    public static final String VERIFICATION_CODE_PREFIX = "verification_code_";
     /**
      * token存储的前缀
      */
@@ -23,8 +23,8 @@ public class RedisPrefixUtils {
      * @param passengerPhone 手机号
      * @return
      */
-    public static String generatorKeyByPhone(String passengerPhone){
-        return VERIFICATION_CODE_PREFIX + passengerPhone;
+    public static String generatorKeyByPhone(String passengerPhone,String identity){
+        return VERIFICATION_CODE_PREFIX + identity +"_" + passengerPhone;
     }
 
     /**
