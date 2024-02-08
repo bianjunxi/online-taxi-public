@@ -1,6 +1,7 @@
-package com.mi.apiboss.service;
+package com.mi.apiboss.service.impl;
 
 import com.mi.apiboss.remote.DriverUserClient;
+import com.mi.apiboss.service.DriverUserService;
 import com.mi.common.dto.ResponseResult;
 import com.mi.common.vo.DriverUser;
 import lombok.extern.slf4j.Slf4j;
@@ -16,7 +17,7 @@ import org.springframework.stereotype.Service;
  */
 @Service
 @Slf4j
-public class DriverUserImpl implements DriverUserService{
+public class DriverUserImpl implements DriverUserService {
 
     @Autowired
     private DriverUserClient driverUserClient;

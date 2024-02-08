@@ -1,7 +1,9 @@
 package com.mi.apiboss.controller;
 
+import com.mi.apiboss.service.CarService;
 import com.mi.apiboss.service.DriverUserService;
 import com.mi.common.dto.ResponseResult;
+import com.mi.common.vo.Car;
 import com.mi.common.vo.DriverUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -30,6 +32,14 @@ public class DriverUserController {
     @PutMapping("/driver-user")
     public ResponseResult updateDriverUser(@RequestBody DriverUser driverUser){
         return driverUserService.updateDriverUser(driverUser);
+    }
+
+    @Autowired
+    private CarService carService;
+
+    @PostMapping("/car")
+    public ResponseResult car(@RequestBody Car car){
+        return carService.addCar(car);
     }
 
 }
