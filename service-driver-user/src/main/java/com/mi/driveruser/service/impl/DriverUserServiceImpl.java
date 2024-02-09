@@ -4,7 +4,9 @@ import com.mi.common.constant.CommonStatusEnum;
 import com.mi.common.constant.DriverCarConstants;
 import com.mi.common.dto.ResponseResult;
 import com.mi.common.vo.DriverUser;
+import com.mi.common.vo.DriverUserWorkStatus;
 import com.mi.driveruser.mapper.DriverUserMapper;
+import com.mi.driveruser.mapper.DriverUserWorkStatusMapper;
 import com.mi.driveruser.service.DriverUserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +31,9 @@ public class DriverUserServiceImpl implements DriverUserService {
     @Autowired
     private DriverUserMapper driverUserMapper;
 
+    @Autowired
+    private DriverUserWorkStatusMapper driverUserWorkStatusMapper;
+
     /**
      * 插入司机信息
      *
@@ -40,6 +45,15 @@ public class DriverUserServiceImpl implements DriverUserService {
         driverUser.setGmtCreate(LocalDateTime.now());
         driverUser.setGmtModified(LocalDateTime.now());
         driverUserMapper.insert(driverUser);
+
+        //初始化司机工作状态表
+        DriverUserWorkStatus driverUserWorkStatus = new DriverUserWorkStatus();
+        driverUserWorkStatus.setDriverId(driverUser.getId());
+        driverUserWorkStatus.setWorkStatus(DriverCarConstants.DRIVER_WORK_STATUS_STOP);
+        driverUserWorkStatus.setGmtCreate(LocalDateTime.now());
+        driverUserWorkStatus.setGmtModified(LocalDateTime.now());
+        driverUserWorkStatusMapper.insert(driverUserWorkStatus);
+
         return ResponseResult.success("");
     }
 
