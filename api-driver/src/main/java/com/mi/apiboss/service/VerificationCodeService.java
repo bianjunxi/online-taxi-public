@@ -18,4 +18,13 @@ public interface VerificationCodeService {
      */
     ResponseResult checkAndSendVerificationCode(VerificationCodeDTO dto);
 
+
+    /**
+     * 校验验证码
+     * @param driverPhone 手机号
+     * @param verificationCode 验证码
+     * @return
+     */
+    ResponseResult checkCode(String driverPhone,String verificationCode);
+
 }
