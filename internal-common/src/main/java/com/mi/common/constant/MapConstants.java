@@ -16,6 +16,10 @@ public class MapConstants {
      * 行政区划查询请求地址
      */
     public static final String DISTRICT_URL = "https://restapi.amap.com/v3/config/district";
+    /**
+     * 轨迹服务创建地址
+     */
+    public static final String SERVICE_ADD_URL = "https://tsapi.amap.com/v1/track/service/add";
 
 
     /**
