@@ -25,8 +25,14 @@ public class MapConstants {
      * 终端服务创建地址
      */
     public static final String TERMINAL_ADD_URL = "https://tsapi.amap.com/v1/track/terminal/add";
-
+    /**
+     * 轨迹服务创建地址
+     */
     public static final String TRACK_ADD_URL = "https://tsapi.amap.com/v1/track/trace/add";
+    /**
+     * 轨迹点上传地址
+     */
+    public static final String POINT_UPLOAD_URL = "https://tsapi.amap.com/v1/track/point/upload";
 
     /**
      * 路径规划响应 json key值
