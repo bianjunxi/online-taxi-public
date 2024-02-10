@@ -26,6 +26,8 @@ public class MapConstants {
      */
     public static final String TERMINAL_ADD_URL = "https://tsapi.amap.com/v1/track/terminal/add";
 
+    public static final String TRACK_ADD_URL = "https://tsapi.amap.com/v1/track/trace/add";
+
     /**
      * 路径规划响应 json key值
      */
