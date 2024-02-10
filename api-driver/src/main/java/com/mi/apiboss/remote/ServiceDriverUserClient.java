@@ -2,6 +2,7 @@ package com.mi.apiboss.remote;
 
 import com.mi.common.dto.ResponseResult;
 import com.mi.common.response.DriverUserExistsResponse;
+import com.mi.common.vo.Car;
 import com.mi.common.vo.DriverUser;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
@@ -30,5 +31,13 @@ public interface ServiceDriverUserClient {
      */
     @RequestMapping(method = RequestMethod.GET, value = "/check-driver/{driverPhone}")
     ResponseResult<DriverUserExistsResponse> checkDriver(@PathVariable("driverPhone") String driverPhone);
+
+    /**
+     * 远程调用service-driver-user根据id查询车辆信息
+     * @param carId
+     * @return
+     */
+    @RequestMapping(method = RequestMethod.GET, value = "/car")
+    ResponseResult<Car> getCarById(@RequestParam Long carId);
 
 }
